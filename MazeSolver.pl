@@ -1,5 +1,9 @@
 %Darren Fernandes. This will be my code for Project 2
 
+find_exit(Maze, Actions) :-
+    find_start(Maze, StartCoords),
+    solve(Maze, StartCoords, [StartCoords], Actions).
+
 %the first function I want to make is something to see waht the value of a cell is
 cell_value(Maze, (Row, Column), CellType) :-
     nth0(Row, Maze, RowList),
@@ -8,9 +12,9 @@ cell_value(Maze, (Row, Column), CellType) :-
 %now that I have a way to get the value of the cell
 %I can get the start value
 find_start(Maze, (Row, Column)):-
- once((
-     nth0(Row, Maze, RowList),
-     nth0(Column, RowList, s))).
+    once((
+        nth0(Row, Maze, RowList),
+        nth0(Column, RowList, s))).
 
 %move should have 4 functions, force a move up, down, left and right
 move((R, C), up, (NewR, C)) :-
@@ -36,7 +40,3 @@ solve(Maze, CurCoords, Visited, [Direction | Rest]) :-
     Type \= w,
     \+ member(NextCoords, Visited),
     solve(Maze, NextCoords, [NextCoords | Visited], Rest).
-
-
-
-
