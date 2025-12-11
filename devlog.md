@@ -24,3 +24,16 @@ Post-Log:-
 December 4, 2025:-
 Pre-Log:-
     Had an exam yesterday and just lazed after that so did not get anything done, but plan to get this done by today so I can work on the mind map for homework 6 tomorrow. 
+Post-Log:-
+    I got done and did try a test run. It is running fine but does tell me there is an error somewhere. Not sure where but I will look into it later, because it might be an error due to the.
+
+December 10, 2025:-
+Pre-Log:- 
+    Testing today. Hope everything goes fine. Will also write the readme
+Post Log:- 
+    Done. I just deleted and reloaded the file and it worked. I ran tests like 
+    [test, example, mazesolver].
+    basic_map(M), display_map(M), find_exit(M, A).
+    basic_map(M), display_map(M), find_exit(M, [down,left,down]).
+    basic_map(M), display_map(M), find_exit(M, [down,left]).
+    These all gave me the right output, but because I was using Powershell which had some weird characters, but other than that it is working fine. I also just finished the readme and hoping I got it done correctly. I will thank the professor for giving us the extra day, which allowed me to rest after my exams yesterday.

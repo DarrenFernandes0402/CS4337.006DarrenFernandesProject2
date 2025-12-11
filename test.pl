@@ -1,14 +1,3 @@
-% This file provides the gen_map/4 predicate.
-% It takes 4 arguments:
-%   1. The number of iterations the algorithm should go through, 4 is a good value
-%   2. The number of rows the map (maze) should have
-%   3. The number of columns the map (maze) should have
-%   4. Is the random map (maze)
-%
-% When using the commandline you can provide swipl with multiple files.
-%
-% Example Usage: ?- gen_map(4, 10,10,M), find_exit(M,A).
-
 :- module(test,[gen_map/4,show_random_map/3]).
 
 make_base(0,_,[]).
@@ -42,8 +31,8 @@ set_cell(Map, coord(R,C),Value,NewMap) :-
     set_nth(Map,R,NewRow,NewMap).
 
 set_cell_safe(Map, Coord, Value, NewMap) :-
-	cell(Map,Coord,n),!,
-	set_cell(Map,Coord,Value,NewMap).
+    cell(Map,Coord,n),!,
+    set_cell(Map,Coord,Value,NewMap).
 set_cell_safe(Map, _, _, Map).
 
 horizontal_wall(Map, R, C, C, NewMap) :-
@@ -63,36 +52,36 @@ vertical_wall(Map, R1, R2,C, NewMap) :-
 horizontal_split(Map, R, C1, C2, NewMap) :-
     horizontal_wall(Map,R,C1,C2,Map2),
     random_between(C1,C2,C3),
-	Before is R-1, After is R+1,
-	optional_set(Map2, f, Before, C3, Map3),
-	optional_set(Map3, f, After, C3, Map4),
+    Before is R-1, After is R+1,
+    optional_set(Map2, f, Before, C3, Map3),
+    optional_set(Map3, f, After, C3, Map4),
     set_cell(Map4, coord(R,C3), f, NewMap).
 
 optional_set(Map, V, R, C, NewMap) :- 
-	length(Map, RMax), R >= 0, R < RMax,
-	Map = [Row|_],
-	length(Row, CMax), C >= 0, C < CMax,!,
-	set_cell(Map, coord(R,C), V, NewMap).
+    length(Map, RMax), R >= 0, R < RMax,
+    Map = [Row|_],
+    length(Row, CMax), C >= 0, C < CMax,!,
+    set_cell(Map, coord(R,C), V, NewMap).
 optional_set(Map, _, _, _, Map).
 
 vertical_split(Map, R1, R2, C, NewMap) :-
     vertical_wall(Map,R1,R2,C,Map2),
     random_between(R1,R2,R3),
-	Before is C-1, After is C+1,
-	optional_set(Map2, f, R3, Before, Map3),
-	optional_set(Map3, f, R3, After, Map4),
+    Before is C-1, After is C+1,
+    optional_set(Map2, f, R3, Before, Map3),
+    optional_set(Map3, f, R3, After, Map4),
     set_cell(Map4, coord(R3,C), f, NewMap).
 
 clean_map([],[]).
 clean_map([Row|T], [CleanRow|T2]) :-
-	clean_row(Row,CleanRow),
-	clean_map(T,T2).
+    clean_row(Row,CleanRow),
+    clean_map(T,T2).
 
 clean_row([],[]).
 clean_row([n|T],[f|T2]) :- clean_row(T,T2).
 clean_row([H|T],[H|T2]) :-
-	H\=n,
-	clean_row(T,T2).
+    H\=n,
+    clean_row(T,T2).
 
 find_value([],_,_,_,Acc,Acc).
 find_value([Row|T], V, R,C, Acc, Coord) :-
@@ -112,7 +101,7 @@ gen_map(N, Rows, Cols, Map) :-
     make_base(Rows,Cols,Map1),
     R2 is Rows-1, C2 is Cols-1,
     gen_map(N, Map1, 0, R2, 0, C2, Map2),
-	clean_map(Map2,Map3),
+    clean_map(Map2,Map3),
     find_value(Map3, f, 0, 0, [], Coord),
     random_permutation(Coord, [Start,Exit|_]),
     set_cell(Map3,Start,s,Map4),
@@ -140,7 +129,7 @@ gen_map(N, Map, R1,R2,C1,C2,NewMap) :-
 
 display_map(Map) :-
     Map = [Row|_], length(Row,L),
-    write('    ▐'),display_line(L,'▁▁'),write('▍'),nl,
+    write('    ▐'),display_line(L,'  '),write('▍'),nl,
     display_rows(Map),
     write('    ▐'),display_line(L,'▔▔'),write('▍'),nl.
 

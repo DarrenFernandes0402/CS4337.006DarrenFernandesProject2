@@ -11,7 +11,7 @@ cell_value(Maze, (Row, Column), CellType) :-
 
 %now that I have a way to get the value of the cell
 %I can get the start value
-find_start(Maze, (Row, Column)):-
+find_start(Maze, (Row, Column)) :-
     once((
         nth0(Row, Maze, RowList),
         nth0(Column, RowList, s))).
