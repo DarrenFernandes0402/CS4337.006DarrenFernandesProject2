@@ -8,7 +8,7 @@ Pre-Log:
 Post-Log:
     I read through the assignent to try and get a head start. All we have to do is write a code that can take something from a start point S to a finish point E. 
     We are allowed to use recursion so I will probably be using it, and we are allowed to brute force it so I will not be trying to get an elegant solution :).
-    I started coding a bit and got some work done but its not much. Hoping to work on it during the holiday week
+    I started coding a bit and got some work done but its not much. Hoping to work on it during the holiday week. So far I have got find_start, shich finds the start of the maze (s), and cell_value, which tells me the value in a cell.
 
 
 
@@ -30,8 +30,7 @@ Pre-Log:-
     
 Post-Log:-
     I did get a decent bit done, only a couple functions left but it seems fairly straightforward. Also made sure to add comments to the code incase I cannot work on it till later.
-
-
+    The functions I did implement move which moves my current coordinates according to the direction, and solve, which is my reursive case to solve the problem.
 
 December 4, 2025:-
 
@@ -40,8 +39,7 @@ Pre-Log:-
     
 Post-Log:-
     I got done and did try a test run. It is running fine but does tell me there is an error somewhere. Not sure where but I will look into it later, because it might be an error due to the.
-
-
+    I finsihed with the function find_exit that finds the exit and calls the functions find_Start and solve, whcih go through and solve the problem.
 
 December 10, 2025:-
 
@@ -54,4 +52,5 @@ Post Log:-
     basic_map(M), display_map(M), find_exit(M, A).
     basic_map(M), display_map(M), find_exit(M, [down,left,down]).
     basic_map(M), display_map(M), find_exit(M, [down,left]).
-    These all gave me the right output, but because I was using Powershell which had some weird characters, but other than that it is working fine. I also just finished the readme and hoping I got it done correctly. I will thank the professor for giving us the extra day, which allowed me to rest after my exams yesterday.
+    These all gave me the right output, but because I was using Powershell which had some weird characters, but other than that it is working fine. I also just finished the readme and hoping I got it done correctly. 
+    I will thank the professor for giving us the extra day, which allowed me to rest after my exams yesterday.
